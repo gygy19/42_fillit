@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_suite.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frmarinh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/03 18:32:09 by frmarinh          #+#    #+#             */
-/*   Updated: 2015/12/06 02:17:44 by frmarinh         ###   ########.fr       */
+/*   Created: 2015/12/11 02:08:38 by frmarinh          #+#    #+#             */
+/*   Updated: 2015/12/11 03:02:32 by frmarinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "all.h"
 #include "libft.h"
 
-int	main(int argc, char **argv)
+int		check_position_2(size_t i, size_t lines, int end, int sharp)
 {
-	int		fd;
-	int		res;
-	char	*buffer;
-
-	fd = 0;
-	res = 0;
-	buffer = malloc(sizeof(char*) * READ_BUFFER + 1);
-	if (argc != 2)
-		ft_putstr("error\n");
-	else
+	if (i < 22)
 	{
-		if ((fd = open(argv[1], O_RDONLY)) == -1)
-			ft_putstr("error\n");
-		else
-		{
-			res = read(fd, buffer, READ_BUFFER);
-			buffer[READ_BUFFER + 1] = '\0';
-			if (check_all(buffer))
-				fd = 666;
-			else
-				ft_putstr("error\n");
-			free(buffer);
-		}
+		if (lines != 3 && lines != 4)
+			return (0);
 	}
+	else if (end)
+	{
+		if (lines != 4)
+			return (0);
+	}
+	else if (lines != 4)
+		return (0);
+	if (sharp != 4)
+		return (0);
+	return (1);
 }
